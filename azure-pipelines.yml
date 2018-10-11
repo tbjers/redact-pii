@@ -1,17 +1,14 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+resources:
+  containers:
+  - container: node
+    image: node:6
 
 pool:
   vmImage: 'Ubuntu 16.04'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '6.x'
-  displayName: 'Install Node.js'
+container: node  
 
+steps:
 - script: npm i -g npm@6.4.1
   displayName: upgrade to npm version 6.4.1
 - script: npm ci
